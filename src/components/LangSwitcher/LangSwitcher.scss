@@ -1,0 +1,52 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.lang-switcher {
+  @include flex-center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 2px solid $primary-color;
+  border-radius: $radius-xl;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: $primary-color;
+  cursor: pointer;
+  transition: $transition;
+  
+  &:hover {
+    background: $primary-color;
+    color: $white;
+    
+    .lang-divider {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+.lang-option {
+  transition: opacity 0.2s ease;
+  
+  &.active {
+    font-weight: 700;
+  }
+  
+  &:not(.active) {
+    opacity: 0.6;
+  }
+}
+
+.lang-divider {
+  color: $primary-color;
+  opacity: 0.5;
+  transition: color 0.2s ease;
+}
+
+.header__actions {
+  .lang-switcher {
+    @media (max-width: 1024px) {
+      padding: 4px 8px;
+      font-size: 0.8rem;
+    }
+  }
+}

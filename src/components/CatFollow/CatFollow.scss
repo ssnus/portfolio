@@ -1,0 +1,84 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.cat-follow {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  @include m.flex-center; // ← Теперь через m.
+  
+  @media (max-width: 768px) {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+.cat-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 20px rgba(20, 184, 166, 0.3));
+  
+  animation: catFloat 3s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.cat-paws {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 60px;
+  font-size: 2rem;
+  opacity: 0.8;
+  
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    gap: 40px;
+  }
+}
+
+.paw {
+  animation: pawWave 2s ease-in-out infinite;
+  
+  &--left {
+    animation-delay: 0s;
+  }
+  
+  &--right {
+    animation-delay: 0.5s;
+  }
+}
+
+@keyframes catFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes pawWave {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.pupil {
+  transition: cx 0.1s ease-out, cy 0.1s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat-svg,
+  .paw {
+    animation: none !important;
+  }
+  
+  .pupil {
+    transition: none !important;
+  }
+}

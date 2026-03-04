@@ -1,0 +1,77 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.skills {
+  padding: 100px 0;
+  background: $bg-light;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__column {
+    @include card;
+  }
+
+  &__category {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: $text-dark;
+    padding-bottom: 16px;
+    border-bottom: 3px solid $primary-color;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.skill-item {
+  display: grid;
+  grid-template-columns: 120px 1fr 50px;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: $text-dark;
+  }
+
+  &__bar {
+    height: 8px;
+    background: $secondary-color;
+    border-radius: $radius-xl;
+    overflow: hidden;
+  }
+
+  &__progress {
+    height: 100%;
+    background: linear-gradient(90deg, $primary-color 0%, $accent-color 100%);
+    border-radius: $radius-xl;
+    transition: width 1s ease;
+  }
+
+  &__level {
+    font-weight: 600;
+    color: $primary-color;
+    text-align: right;
+
+    @media (max-width: 768px) {
+      text-align: left;
+    }
+  }
+}

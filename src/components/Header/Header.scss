@@ -1,0 +1,145 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  background: rgba($white, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: $shadow-sm;
+  z-index: 1000;
+
+  &__container {
+    @include flex-between;
+    height: 100%;
+  }
+
+  &__logo {
+    @include flex-center;
+    gap: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  &__nav {
+    @media (max-width: 768px) {
+      position: fixed;
+      top: $header-height;
+      left: 0;
+      right: 0;
+      background: $white;
+      padding: 24px;
+      box-shadow: $shadow-md;
+      transform: translateY(-150%);
+      transition: transform 0.3s ease;
+
+      &.active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 8px;
+    cursor: pointer;
+
+    span {
+      width: 25px;
+      height: 3px;
+      background: $text-dark;
+      border-radius: 3px;
+      transition: $transition;
+    }
+
+    @media (max-width: 768px) {
+      display: flex;
+    }
+  }
+}
+
+.nav__list {
+  @include flex-center;
+  gap: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.nav__link {
+  font-weight: 500;
+  color: $text-gray;
+  position: relative;
+  transition: $transition;
+
+  &:hover,
+  &.active {
+    color: $primary-color;
+  }
+
+  &.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $primary-color;
+    border-radius: 3px;
+  }
+}
+
+.btn {
+  padding: 10px 24px;
+  border-radius: $radius-xl;
+  font-weight: 600;
+  transition: $transition;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; 
+  text-align: center;
+  
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &--primary {
+    background: $primary-color;
+    color: $white;
+
+    &:hover {
+      background: $primary-dark;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &--outline {
+    border: 2px solid $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background: $primary-color;
+      color: $white;
+    }
+  }
+}
