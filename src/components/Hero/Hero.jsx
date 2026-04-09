@@ -16,7 +16,7 @@ const Hero = () => {
           <div className="hero__content">
             <div className="hero__text">
               <h1 className="hero__title">
-                {t('hero.greeting')} <span className="gradient-text">fx.snuss</span>
+                {t('hero.greeting')} <span className="gradient-text">Алина</span>
               </h1>
               <p className="hero__subtitle">{t('hero.role')}</p>
               <p className="hero__description">{t('hero.description')}</p>
